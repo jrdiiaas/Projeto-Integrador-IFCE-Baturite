@@ -12,14 +12,18 @@
 <body>
     <header id="header"></header>
     <main>
+        <div class="title-page">
+            <h2>Login</h2>
+            <p>Clique em login para acessar a página de cadastro.</p>
+        </div>
         <div class="content-page">
             <div class="content-page-login">
                 <form>
-                    <p>Usuário</p>
-                    <input type="text" placeholder="Usuário" />
-                    <p>Senha</p>
-                    <input type="password" id="password" placeholder="Senha" />
-                    <button>login</button>
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" name="username" placeholder="Usuário" /><br><br>
+                    <label>Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Senha" /><br><br>
+                    <button type="button" onclick="window.location.href='cadastro.html'">login</button>
                 </form>
             </div>
         </div>
