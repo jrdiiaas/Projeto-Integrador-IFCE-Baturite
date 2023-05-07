@@ -21,6 +21,29 @@ function loadFooter() {
 loadHeader();
 loadFooter();
 
+function loadProductHeader() {
+    const headerDiv = document.getElementById('Productheader');
+
+    fetch('../header.html')
+        .then(response => response.text())
+        .then(data => {
+            headerDiv.innerHTML = data;
+        });
+}
+
+function loadProductFooter() {
+    const footerDiv = document.getElementById('Productfooter');
+
+    fetch('../footer.html')
+        .then(response => response.text())
+        .then(data => {
+            footerDiv.innerHTML = data;
+        });
+}
+
+loadProductHeader();
+loadProductFooter();
+
 const userTable = document.querySelector('#userTable')
 const newUserForm = document.querySelector('#newUserForm')
 const userNameInput = document.querySelector('#userNameInput')
