@@ -21,7 +21,7 @@ function loadFooter() {
 loadHeader();
 loadFooter();
 
-const userList = document.querySelector('#userList')
+const userTable = document.querySelector('#userTable')
 const newUserForm = document.querySelector('#newUserForm')
 const userNameInput = document.querySelector('#userNameInput')
 const userEmailInput = document.querySelector('#userEmailInput')
@@ -49,22 +49,38 @@ function createUser(name, email) {
 function renderUsers() {
     clearElement(userList)
     users.forEach(function (user) {
-        const item = document.createElement('li')
-        item.classList.add('item')
-        item.innerHTML = `${user.name} - ${user.email} <button data-delete-user="${user.id}">Deletar</button> <button data-edit-user="${user.id}">Editar</button>`
-        userList.appendChild(item)
+        const row = document.createElement('tr')
+        const nameCell = document.createElement('td')
+        const emailCell = document.createElement('td')
+        const actionsCell = document.createElement('td')
+        const deleteButton = document.createElement('button')
+        const editButton = document.createElement('button')
+
+        nameCell.textContent = user.name
+        emailCell.textContent = user.email
+        deleteButton.textContent = 'Deletar'
+        editButton.textContent = 'Editar'
+        deleteButton.dataset.deleteUser = user.id
+        editButton.dataset.editUser = user.id
+
+        actionsCell.appendChild(deleteButton)
+        actionsCell.appendChild(editButton)
+
+        row.appendChild(nameCell)
+        row.appendChild(emailCell)
+        row.appendChild(actionsCell)
+
+        userList.appendChild(row)
 
         // Adicionando funcionalidade de excluir usuário
-        const deleteButton = item.querySelector('[data-delete-user]')
         deleteButton.addEventListener('click', function (e) {
-            const id = e.target.getAttribute('data-delete-user')
+            const id = e.target.dataset.deleteUser
             deleteUser(id)
         })
 
         // Adicionando funcionalidade de editar usuário
-        const editButton = item.querySelector('[data-edit-user]')
         editButton.addEventListener('click', function (e) {
-            const id = e.target.getAttribute('data-edit-user')
+            const id = e.target.dataset.editUser
             editUser(id)
         })
     })
@@ -111,8 +127,8 @@ let products = []
 newProductForm.addEventListener('submit', function (e) {
     e.preventDefault()
     const productName = productNameInput.value
-    const productPrice = parseFloat(productPriceInput.value)
-    if (productName === null || productName === '' || isNaN(productPrice)) return
+    const productPrice = productPriceInput.value
+    if (productName === null || productName === '' || productPrice === null || productPrice === '') return
     const product = createProduct(productName, productPrice)
     productNameInput.value = null
     productPriceInput.value = null
@@ -129,20 +145,26 @@ function createProduct(name, price) {
 function renderProducts() {
     clearElement(productList)
     products.forEach(function (product) {
-        const item = document.createElement('li')
-        item.classList.add('item')
-        item.innerHTML = `${product.name} - R$${product.price.toFixed(2)} <button data-delete-product="${product.id}">Deletar</button> <button data-edit-product="${product.id}">Editar</button>`
-        productList.appendChild(item)
+        const row = document.createElement('tr')
+        row.innerHTML = `
+            <td>${product.name}</td>
+            <td>R$ ${product.price}</td>
+            <td>
+                <button data-delete-product="${product.id}">Deletar</button>
+                <button data-edit-product="${product.id}">Editar</button>
+            </td>
+        `
+        productList.appendChild(row)
 
         // Adicionando funcionalidade de excluir produto
-        const deleteButton = item.querySelector('[data-delete-product]')
+        const deleteButton = row.querySelector('[data-delete-product]')
         deleteButton.addEventListener('click', function (e) {
             const id = e.target.getAttribute('data-delete-product')
             deleteProduct(id)
         })
 
         // Adicionando funcionalidade de editar produto
-        const editButton = item.querySelector('[data-edit-product]')
+        const editButton = row.querySelector('[data-edit-product]')
         editButton.addEventListener('click', function (e) {
             const id = e.target.getAttribute('data-edit-product')
             editProduct(id)
@@ -171,15 +193,14 @@ function editProduct(id) {
         return product.id === id
     })
     const newName = prompt('Digite o novo nome:', product.name)
-    const newPrice = parseFloat(prompt('Digite o novo preço:', product.price))
+    const newPrice = prompt('Digite o novo preço:', product.price)
     if (newName !== null && newName !== '') {
         product.name = newName
     }
-    if (!isNaN(newPrice)) {
+    if (newPrice !== null && newPrice !== '') {
         product.price = newPrice
     }
     renderProducts()
 }
 
-// Inicializando a lista de produtos
 renderProducts()

@@ -21,12 +21,22 @@
             <h3>Usuários</h3>
             <form id="newUserForm">
                 <label for="userNameInput">Nome:</label>
-                <input type="text" id="userNameInput" name="name">
+                <input type="text" id="userNameInput" name="userName">
                 <label for="userEmailInput">E-mail:</label>
-                <input type="email" id="userEmailInput" name="email">
-                <button type="submit">+</button>
+                <input type="email" id="userEmailInput" name="userEmail">
+                <button type="submit">Adicionar</button>
             </form>
-            <ul id="userList"></ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="userList">
+                </tbody>
+            </table>
             <h3>Produtos</h3>
             <form id="newProductForm">
                 <label for="productNameInput">Nome:</label>
@@ -35,7 +45,17 @@
                 <input type="number" id="productPriceInput" name="productPrice">
                 <button type="submit">+</button>
             </form>
-            <ul id="productList"></ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="productList">
+                </tbody>
+            </table>
         </div>
     </div>
 </main>
