@@ -24,7 +24,7 @@ loadFooter();
 function loadProductHeader() {
     const headerDiv = document.getElementById('Productheader');
 
-    fetch('../header.html')
+    fetch('../productheader.html')
         .then(response => response.text())
         .then(data => {
             headerDiv.innerHTML = data;
@@ -34,7 +34,7 @@ function loadProductHeader() {
 function loadProductFooter() {
     const footerDiv = document.getElementById('Productfooter');
 
-    fetch('../footer.html')
+    fetch('../productfooter.html')
         .then(response => response.text())
         .then(data => {
             footerDiv.innerHTML = data;
