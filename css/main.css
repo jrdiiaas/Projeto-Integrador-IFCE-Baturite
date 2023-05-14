@@ -99,7 +99,7 @@ main {
   border-radius: 5px;
 }
 
-.container-1 {
+.container-1, .title-page {
   padding: 30px 0;
   font-size: 1.4em;
 }
@@ -115,6 +115,12 @@ main {
 
 .container-cursos li {
   max-width: 300px;
+}
+
+.content-page {
+  padding: 30px 0;
+  text-align: justify;
+  min-height: 100vh;
 }
 
 footer {
