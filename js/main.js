@@ -21,6 +21,11 @@ function loadFooter() {
 loadHeader();
 loadFooter();
 
+var metaThemeColor = document.createElement('meta');
+metaThemeColor.name = "theme-color";
+metaThemeColor.content = "#202020";
+document.getElementsByTagName('head')[0].appendChild(metaThemeColor);
+
 function loadProductHeader() {
     const headerDiv = document.getElementById('Productheader');
 
