@@ -7,59 +7,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Cadsatro - Projeto Integrador - IFCE Baturité</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .title-page {
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #f8f9fa, #ced4da);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .title-page h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .content-page {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .content-page-cadastro form {
+            margin-bottom: 20px;
+        }
+
+        .content-page-cadastro label {
+            font-weight: bold;
+        }
+
+        .content-page-cadastro input[type="text"],
+        .content-page-cadastro input[type="email"],
+        .content-page-cadastro input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        .content-page-cadastro button[type="submit"],
+        .content-page-cadastro button[type="button"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
     <header id="header"></header>
-</body>
-<main>
-    <div class="title-page">
-        <h2>Cadastro</h2>
-    </div>
-    <div class="content-page">
-        <div class="content-page-cadastro">
-            <h3>Usuários</h3>
-            <form id="newUserForm">
-                <label for="userNameInput">Nome:</label>
-                <input type="text" id="userNameInput" name="userName">
-                <label for="userEmailInput">E-mail:</label>
-                <input type="email" id="userEmailInput" name="userEmail">
-                <button type="submit">Adicionar</button>
-            </form>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="userList">
-                </tbody>
-            </table>
-            <h3>Produtos</h3>
-            <form id="newProductForm">
-                <label for="productNameInput">Nome:</label>
-                <input type="text" id="productNameInput" name="productName">
-                <label for="productPriceInput">Preço:</label>
-                <input type="number" id="productPriceInput" name="productPrice">
-                <button type="submit">+</button>
-            </form>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="productList">
-                </tbody>
-            </table>
+    <main>
+        <div class="title-page">
+            <h2>Cadastro</h2>
         </div>
-    </div>
-</main>
-<footer id="footer"></footer>
-<script src="js/main.js"></script>
+        <div class="content-page">
+            <div class="content-page-cadastro">
+                <h3>Usuários</h3>
+                <form id="newUserForm">
+                    <div class="form-group">
+                        <label for="userNameInput">Nome:</label>
+                        <input type="text" id="userNameInput" name="userName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmailInput">E-mail:</label>
+                        <input type="email" id="userEmailInput" name="userEmail" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                </form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userList">
+                    </tbody>
+                </table>
+                <h3>Produtos</h3>
+                <form id="newProductForm">
+                    <div class="form-group">
+                        <label for="productNameInput">Nome:</label>
+                        <input type="text" id="productNameInput" name="productName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="productPriceInput">Preço:</label>
+                        <input type="number" id="productPriceInput" name="productPrice" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                </form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productList">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer id="footer"></footer>
+    <script src="js/main.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
 
 </html>
